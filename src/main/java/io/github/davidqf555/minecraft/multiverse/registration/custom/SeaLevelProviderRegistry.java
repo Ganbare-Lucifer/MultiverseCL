@@ -1,7 +1,7 @@
 package io.github.davidqf555.minecraft.multiverse.registration.custom;
 
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
-import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.SeaLevelSelector;
+import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.SeaLevelProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,21 +14,21 @@ import net.minecraftforge.registries.RegistryBuilder;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = Multiverse.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public final class SeaLevelSelectorRegistry {
+public final class SeaLevelProviderRegistry {
 
-    public static final ResourceKey<Registry<SeaLevelSelector>> LOCATION = ResourceKey.createRegistryKey(new ResourceLocation(Multiverse.MOD_ID, "sea_level_selector"));
-    private static Supplier<IForgeRegistry<SeaLevelSelector>> registry = null;
+    public static final ResourceKey<Registry<SeaLevelProvider>> LOCATION = ResourceKey.createRegistryKey(new ResourceLocation(Multiverse.MOD_ID, "sea_level_provider"));
+    private static Supplier<IForgeRegistry<SeaLevelProvider>> registry = null;
 
-    private SeaLevelSelectorRegistry() {
+    private SeaLevelProviderRegistry() {
     }
 
-    public static IForgeRegistry<SeaLevelSelector> getRegistry() {
+    public static IForgeRegistry<SeaLevelProvider> getRegistry() {
         return registry.get();
     }
 
     @SubscribeEvent
     public static void onNewRegistry(NewRegistryEvent event) {
-        registry = event.create(new RegistryBuilder<SeaLevelSelector>().setType(SeaLevelSelector.class).setName(LOCATION.location()).dataPackRegistry(SeaLevelSelector.DIRECT_CODEC));
+        registry = event.create(new RegistryBuilder<SeaLevelProvider>().setType(SeaLevelProvider.class).setName(LOCATION.location()).dataPackRegistry(SeaLevelProvider.DIRECT_CODEC));
     }
 
 }

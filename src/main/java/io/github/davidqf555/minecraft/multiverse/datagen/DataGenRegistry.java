@@ -1,8 +1,6 @@
 package io.github.davidqf555.minecraft.multiverse.datagen;
 
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
-import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionTypeRegistry;
-import io.github.davidqf555.minecraft.multiverse.common.worldgen.NoiseSettingsRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,5 @@
-package io.github.davidqf555.minecraft.multiverse.client.render;
+package io.github.davidqf555.minecraft.multiverse.client.colors;
 
-import io.github.davidqf555.minecraft.multiverse.client.MultiverseColorHelper;
 import io.github.davidqf555.minecraft.multiverse.common.items.tools.MultiversalToolHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColor;

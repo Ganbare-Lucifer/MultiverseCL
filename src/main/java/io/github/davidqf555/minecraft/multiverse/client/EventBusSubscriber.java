@@ -1,7 +1,8 @@
 package io.github.davidqf555.minecraft.multiverse.client;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import io.github.davidqf555.minecraft.multiverse.client.effects.ColoredFogEffect;
+import io.github.davidqf555.minecraft.multiverse.client.colors.KaleiditeCurrentColor;
+import io.github.davidqf555.minecraft.multiverse.client.colors.KaleiditeTargetColor;
 import io.github.davidqf555.minecraft.multiverse.client.render.*;
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
 import io.github.davidqf555.minecraft.multiverse.common.entities.CollectorEntity;

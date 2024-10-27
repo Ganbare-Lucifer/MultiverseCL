@@ -1,7 +1,5 @@
-package io.github.davidqf555.minecraft.multiverse.common.data;
+package io.github.davidqf555.minecraft.multiverse.common;
 
-import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
-import io.github.davidqf555.minecraft.multiverse.common.ServerConfigs;
 import io.github.davidqf555.minecraft.multiverse.common.packets.RiftParticlesPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

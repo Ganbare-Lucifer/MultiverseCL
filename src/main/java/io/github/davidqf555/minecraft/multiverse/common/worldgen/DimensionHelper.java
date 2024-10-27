@@ -26,6 +26,9 @@ import net.minecraftforge.network.PacketDistributor;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Credit to <a href="https://github.com/McJtyMods/RFToolsDimensions">McJty</a>
+ */
 public final class DimensionHelper {
 
     private DimensionHelper() {

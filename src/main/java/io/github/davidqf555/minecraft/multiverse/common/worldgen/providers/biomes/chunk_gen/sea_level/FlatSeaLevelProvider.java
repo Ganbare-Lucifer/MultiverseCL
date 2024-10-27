@@ -3,21 +3,21 @@ package io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biom
 import com.mojang.serialization.Codec;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.fluid_pickers.FlatFluidPicker;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.fluid_pickers.SerializableFluidPicker;
-import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelSelectorTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelProviderTypeRegistry;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.RandomSource;
 
-public class FlatSeaLevelSelector extends SeaLevelSelector {
+public class FlatSeaLevelProvider extends SeaLevelProvider {
 
-    public static final Codec<FlatSeaLevelSelector> CODEC = IntRange.CODEC.fieldOf("range").xmap(FlatSeaLevelSelector::new, sea -> sea.range).codec();
+    public static final Codec<FlatSeaLevelProvider> CODEC = IntRange.CODEC.fieldOf("range").xmap(FlatSeaLevelProvider::new, sea -> sea.range).codec();
     private final IntRange range;
 
-    protected FlatSeaLevelSelector(IntRange range) {
+    protected FlatSeaLevelProvider(IntRange range) {
         this.range = range;
     }
 
-    public static FlatSeaLevelSelector of(int min, int max) {
-        return new FlatSeaLevelSelector(IntRange.of(min, max));
+    public static FlatSeaLevelProvider of(int min, int max) {
+        return new FlatSeaLevelProvider(IntRange.of(min, max));
     }
 
     @Override
@@ -26,8 +26,8 @@ public class FlatSeaLevelSelector extends SeaLevelSelector {
     }
 
     @Override
-    public SeaLevelSelectorType<?> getType() {
-        return SeaLevelSelectorTypeRegistry.FLAT.get();
+    public SeaLevelProviderType<?> getType() {
+        return SeaLevelProviderTypeRegistry.FLAT.get();
     }
 
 }

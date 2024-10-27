@@ -1,7 +1,9 @@
-package io.github.davidqf555.minecraft.multiverse.common.worldgen;
+package io.github.davidqf555.minecraft.multiverse.datagen;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
+import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionEffectsRegistry;
+import io.github.davidqf555.minecraft.multiverse.common.worldgen.MultiverseType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.dimension.DimensionType;
 

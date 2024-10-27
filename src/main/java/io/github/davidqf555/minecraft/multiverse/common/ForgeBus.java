@@ -1,6 +1,5 @@
 package io.github.davidqf555.minecraft.multiverse.common;
 
-import io.github.davidqf555.minecraft.multiverse.common.data.ArrowSummonsData;
 import io.github.davidqf555.minecraft.multiverse.common.entities.KaleiditeCoreEntity;
 import io.github.davidqf555.minecraft.multiverse.common.items.IDeathEffect;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.data.ShapesManager;

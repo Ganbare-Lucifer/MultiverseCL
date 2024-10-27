@@ -1,7 +1,0 @@
-{
-  "type": "multiverse:flat",
-  "range": {
-    "min": 128,
-    "max": 128
-  }
-}

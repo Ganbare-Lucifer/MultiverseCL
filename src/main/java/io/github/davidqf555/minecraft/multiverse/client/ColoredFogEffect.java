@@ -1,4 +1,4 @@
-package io.github.davidqf555.minecraft.multiverse.client.effects;
+package io.github.davidqf555.minecraft.multiverse.client;
 
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;

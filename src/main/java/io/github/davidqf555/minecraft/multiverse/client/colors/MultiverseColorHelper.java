@@ -1,4 +1,4 @@
-package io.github.davidqf555.minecraft.multiverse.client;
+package io.github.davidqf555.minecraft.multiverse.client.colors;
 
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionHelper;
 import net.minecraft.util.FastColor;

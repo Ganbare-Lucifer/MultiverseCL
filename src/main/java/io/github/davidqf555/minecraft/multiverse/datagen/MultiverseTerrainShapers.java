@@ -1,6 +1,5 @@
-package io.github.davidqf555.minecraft.multiverse.common.worldgen;
+package io.github.davidqf555.minecraft.multiverse.datagen;
 
-import net.minecraft.data.worldgen.TerrainProvider;
 import net.minecraft.util.CubicSpline;
 import net.minecraft.util.ToFloatFunction;
 import net.minecraft.world.level.biome.TerrainShaper;

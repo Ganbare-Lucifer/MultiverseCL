@@ -6,7 +6,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Matrix4f;
 import io.github.davidqf555.minecraft.multiverse.client.ClientHelper;
-import io.github.davidqf555.minecraft.multiverse.client.MultiverseColorHelper;
+import io.github.davidqf555.minecraft.multiverse.client.colors.MultiverseColorHelper;
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
 import io.github.davidqf555.minecraft.multiverse.common.blocks.RiftTileEntity;
 import net.minecraft.client.renderer.MultiBufferSource;

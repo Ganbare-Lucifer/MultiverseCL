@@ -3,7 +3,7 @@ package io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biom
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.fluid_pickers.SerializableFluidPicker;
-import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelSelectorTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelProviderTypeRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,14 +11,14 @@ import net.minecraft.world.level.levelgen.RandomSource;
 
 import java.util.List;
 
-public class WeightedSeaLevelSelector extends SeaLevelSelector {
+public class WeightedSeaLevelProvider extends SeaLevelProvider {
 
-    public static final Codec<WeightedSeaLevelSelector> CODEC = RecordCodecBuilder.create(inst -> inst.group(
+    public static final Codec<WeightedSeaLevelProvider> CODEC = RecordCodecBuilder.create(inst -> inst.group(
             Entry.CODEC.listOf().fieldOf("selectors").forGetter(val -> val.selectors)
-    ).apply(inst, WeightedSeaLevelSelector::new));
+    ).apply(inst, WeightedSeaLevelProvider::new));
     private final List<Entry> selectors;
 
-    protected WeightedSeaLevelSelector(List<Entry> selectors) {
+    protected WeightedSeaLevelProvider(List<Entry> selectors) {
         this.selectors = selectors;
         if (selectors.stream().mapToInt(Entry::weight).anyMatch(val -> val < 0) || selectors.stream().mapToInt(Entry::weight).sum() <= 0) {
             throw new IllegalArgumentException("Invalid weights");
@@ -39,13 +39,13 @@ public class WeightedSeaLevelSelector extends SeaLevelSelector {
     }
 
     @Override
-    public SeaLevelSelectorType<?> getType() {
-        return SeaLevelSelectorTypeRegistry.WEIGHTED.get();
+    public SeaLevelProviderType<?> getType() {
+        return SeaLevelProviderTypeRegistry.WEIGHTED.get();
     }
 
-    protected record Entry(Holder<SeaLevelSelector> selector, int weight) {
+    protected record Entry(Holder<SeaLevelProvider> selector, int weight) {
         private static final Codec<Entry> CODEC = RecordCodecBuilder.create(inst -> inst.group(
-                SeaLevelSelector.CODEC.fieldOf("selector").forGetter(Entry::selector),
+                SeaLevelProvider.CODEC.fieldOf("selector").forGetter(Entry::selector),
                 ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("weight", 1).forGetter(Entry::weight)
         ).apply(inst, Entry::new));
     }

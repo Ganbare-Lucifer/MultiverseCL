@@ -6,7 +6,7 @@ import io.github.davidqf555.minecraft.multiverse.common.worldgen.MultiverseNoise
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.MultiverseType;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.biome_source.BiomeSourceProvider;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.noise_settings.BiomeNoiseGeneratorSettingsProvider;
-import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.SeaLevelSelector;
+import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.SeaLevelProvider;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.chunk_gen.sea_level.fluid_pickers.SerializableFluidPicker;
 import io.github.davidqf555.minecraft.multiverse.registration.custom.biomes.BiomeChunkGeneratorProviderTypeRegistry;
 import net.minecraft.core.Holder;
@@ -23,15 +23,15 @@ import java.util.Set;
 public class NoiseChunkGeneratorProvider implements BiomeChunkGeneratorProvider<MultiverseNoiseChunkGenerator> {
 
     public static final Codec<NoiseChunkGeneratorProvider> CODEC = RecordCodecBuilder.create(inst -> inst.group(
-            SeaLevelSelector.CODEC.fieldOf("sea_level").forGetter(val -> val.sea),
+            SeaLevelProvider.CODEC.fieldOf("sea_level").forGetter(val -> val.sea),
             BiomeNoiseGeneratorSettingsProvider.CODEC.fieldOf("noise_settings").forGetter(val -> val.noise),
             BiomeSourceProvider.CODEC.fieldOf("biomes").forGetter(val -> val.biomes)
     ).apply(inst, NoiseChunkGeneratorProvider::new));
     private final Holder<BiomeNoiseGeneratorSettingsProvider> noise;
-    private final Holder<SeaLevelSelector> sea;
+    private final Holder<SeaLevelProvider> sea;
     private final BiomeSourceProvider<?> biomes;
 
-    public NoiseChunkGeneratorProvider(Holder<SeaLevelSelector> sea, Holder<BiomeNoiseGeneratorSettingsProvider> noise, BiomeSourceProvider<?> biomes) {
+    public NoiseChunkGeneratorProvider(Holder<SeaLevelProvider> sea, Holder<BiomeNoiseGeneratorSettingsProvider> noise, BiomeSourceProvider<?> biomes) {
         this.noise = noise;
         this.sea = sea;
         this.biomes = biomes;

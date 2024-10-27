@@ -3,7 +3,7 @@ package io.github.davidqf555.minecraft.multiverse.common;
 import io.github.davidqf555.minecraft.multiverse.registration.*;
 import io.github.davidqf555.minecraft.multiverse.registration.custom.DimensionProviderTypeRegistry;
 import io.github.davidqf555.minecraft.multiverse.registration.custom.FluidPickerTypeRegistry;
-import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelSelectorTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelProviderTypeRegistry;
 import io.github.davidqf555.minecraft.multiverse.registration.custom.biomes.*;
 import io.github.davidqf555.minecraft.multiverse.registration.worldgen.BiomeSourceRegistry;
 import io.github.davidqf555.minecraft.multiverse.registration.worldgen.ChunkGeneratorRegistry;
@@ -57,7 +57,7 @@ public class Multiverse {
         BiomeSourceProviderTypeRegistry.TYPES.register(bus);
         DimensionProviderTypeRegistry.TYPES.register(bus);
         FluidPickerTypeRegistry.TYPES.register(bus);
-        SeaLevelSelectorTypeRegistry.TYPES.register(bus);
+        SeaLevelProviderTypeRegistry.TYPES.register(bus);
     }
 
 }
