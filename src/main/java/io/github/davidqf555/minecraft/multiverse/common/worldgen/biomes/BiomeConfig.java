@@ -23,7 +23,7 @@ public class BiomeConfig extends ForgeRegistryEntry<BiomeConfig> {
 
     public static final Codec<BiomeConfig> DIRECT_CODEC = RecordCodecBuilder.create(inst -> inst.group(
             BiomeType.CODEC.listOf().fieldOf("types").forGetter(BiomeConfig::getTypes),
-            IntRange.CODEC.optionalFieldOf("count", IntRange.of(1, 1)).forGetter(BiomeConfig::getCount)
+            IntRange.POSITIVE_CODEC.optionalFieldOf("count", IntRange.of(1, 1)).forGetter(BiomeConfig::getCount)
     ).apply(inst, BiomeConfig::new));
     public static final Codec<Holder<BiomeConfig>> CODEC = RegistryFileCodec.create(BiomeConfigRegistry.LOCATION, DIRECT_CODEC);
     private final List<BiomeType> types;
@@ -58,32 +58,33 @@ public class BiomeConfig extends ForgeRegistryEntry<BiomeConfig> {
         Set<MultiverseType> biomesTypes = EnumSet.allOf(MultiverseType.class);
         Predicate<ResourceKey<Biome>> valid = key -> biomesTypes.stream().anyMatch(type -> type.is(key));
         List<BiomeType> types = getTypes().stream().filter(type -> type.getBiomes(registry).stream().anyMatch(valid)).collect(Collectors.toList());
-        Set<ResourceKey<Biome>> biomes = new HashSet<>();
         if (types.isEmpty()) {
-            biomes.add(Biomes.THE_VOID);
-        } else {
-            BiomeType type = selectRandom(rand, types);
-            types.remove(type);
-            biomes.addAll(type.getBiomes(registry));
+            return Pair.of(MultiverseType.OVERWORLD, Set.of(Biomes.THE_VOID));
         }
+        Map<MultiverseType, Set<ResourceKey<Biome>>> partitions = new EnumMap<>(MultiverseType.class);
         int count = Math.min(types.size(), this.count.getRandom(rand));
         for (int i = 0; i < count; i++) {
             BiomeType type = selectRandom(rand, types);
             types.remove(type);
-            biomes.addAll(type.getBiomes(registry));
-        }
-        biomes.removeIf(valid.negate());
-        Map<MultiverseType, Integer> counts = new EnumMap<>(MultiverseType.class);
-        for (ResourceKey<Biome> biome : biomes) {
-            for (MultiverseType type : biomesTypes) {
-                if (type.is(biome)) {
-                    counts.compute(type, (t, current) -> current == null ? 1 : current + 1);
+            for (ResourceKey<Biome> biome : type.getBiomes(registry)) {
+                if (valid.test(biome)) {
+                    for (MultiverseType mType : MultiverseType.values()) {
+                        if (mType.is(biome)) {
+                            Set<ResourceKey<Biome>> set;
+                            if (partitions.containsKey(mType)) {
+                                set = partitions.get(mType);
+                            } else {
+                                set = new HashSet<>();
+                                partitions.put(mType, set);
+                            }
+                            set.add(biome);
+                        }
+                    }
                 }
             }
         }
-        MultiverseType type = counts.keySet().stream().max((i, j) -> counts.get(j) - counts.get(i)).orElseThrow();
-        biomes.removeIf(key -> !type.is(key));
-        return Pair.of(type, biomes);
+        Map.Entry<MultiverseType, Set<ResourceKey<Biome>>> entry = partitions.entrySet().stream().max(Comparator.comparingInt(v -> v.getValue().size())).orElseThrow();
+        return Pair.of(entry.getKey(), entry.getValue());
     }
 
 }
