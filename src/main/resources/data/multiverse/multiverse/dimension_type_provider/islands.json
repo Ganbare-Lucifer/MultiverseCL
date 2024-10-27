@@ -6,7 +6,7 @@
       "entries": [
         {
           "value": "multiverse:islands/overworld/day/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/overworld/day/fog/white"
@@ -58,7 +58,7 @@
         },
         {
           "value": "multiverse:islands/overworld/dynamic/overworld",
-          "weight": 128
+          "weight": 256
         },
         {
           "value": "multiverse:islands/overworld/dynamic/fog/white",
@@ -126,7 +126,7 @@
         },
         {
           "value": "multiverse:islands/overworld/night/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/overworld/night/end",
@@ -182,7 +182,7 @@
         },
         {
           "value": "multiverse:islands/overworld/sunrise/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/overworld/sunrise/fog/white"
@@ -234,7 +234,7 @@
         },
         {
           "value": "multiverse:islands/overworld/sunset/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/overworld/sunset/fog/white"
@@ -291,7 +291,7 @@
       "entries": [
         {
           "value": "multiverse:islands/nether/day/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/nether/day/fog/white"
@@ -343,7 +343,7 @@
         },
         {
           "value": "multiverse:islands/nether/dynamic/overworld",
-          "weight": 128
+          "weight": 256
         },
         {
           "value": "multiverse:islands/nether/dynamic/fog/white",
@@ -411,7 +411,7 @@
         },
         {
           "value": "multiverse:islands/nether/night/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/nether/night/end",
@@ -467,7 +467,7 @@
         },
         {
           "value": "multiverse:islands/nether/sunrise/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/nether/sunrise/fog/white"
@@ -519,7 +519,7 @@
         },
         {
           "value": "multiverse:islands/nether/sunset/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/nether/sunset/fog/white"
@@ -576,7 +576,7 @@
       "entries": [
         {
           "value": "multiverse:islands/end/day/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/end/day/fog/white"
@@ -628,7 +628,7 @@
         },
         {
           "value": "multiverse:islands/end/dynamic/overworld",
-          "weight": 128
+          "weight": 256
         },
         {
           "value": "multiverse:islands/end/dynamic/fog/white",
@@ -696,7 +696,7 @@
         },
         {
           "value": "multiverse:islands/end/night/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/end/night/end",
@@ -752,7 +752,7 @@
         },
         {
           "value": "multiverse:islands/end/sunrise/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/end/sunrise/fog/white"
@@ -804,7 +804,7 @@
         },
         {
           "value": "multiverse:islands/end/sunset/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:islands/end/sunset/fog/white"

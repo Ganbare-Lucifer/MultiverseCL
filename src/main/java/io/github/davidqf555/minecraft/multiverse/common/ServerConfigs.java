@@ -25,13 +25,13 @@ public class ServerConfigs {
                 .defineInRange("fixedTimeChance", 0.25, 0, 1);
         builder.pop().push("Rifts");
         riftChance = builder.comment("This is the chance a rift will generate. Increasing it will cause less rifts to generate. Specifically, each rift has a reciprocal of this value chance to generate per chunk. ")
-                .defineInRange("chance", 50, 1, Integer.MAX_VALUE);
+                .defineInRange("chance", 100, 1, Integer.MAX_VALUE);
         riftRange = builder.comment("This is the range that is scanned for existing rifts. ")
                 .defineInRange("range", 128, 0, Integer.MAX_VALUE);
         minRiftWidth = builder.comment("This is the minimum width radius of naturally generated rifts. ")
                 .defineInRange("minWidth", 1, 0, Double.MAX_VALUE);
         maxRiftWidth = builder.comment("This is the maximum width radius of naturally generated rifts. This should be greater or equal to minWidth. ")
-                .defineInRange("maxWidth", 8, 0, Double.MAX_VALUE);
+                .defineInRange("maxWidth", 4, 0, Double.MAX_VALUE);
         minRiftHeight = builder.comment("This is the minimum height radius of naturally generated rifts. ")
                 .defineInRange("minHeight", 16, 0, Integer.MAX_VALUE);
         maxRiftHeight = builder.comment("This is the maximum height radius of naturally generated rifts. This should be greater or equal to minHeight. ")

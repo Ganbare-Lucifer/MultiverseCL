@@ -26,7 +26,7 @@ import java.util.List;
 
 public class ShapesManager {
 
-    public static final ShapesManager INSTANCE = new ShapesManager(new ResourceLocation(Multiverse.MOD_ID, "worldgen/multiverse/shapes.json"));
+    public static final ShapesManager INSTANCE = new ShapesManager(new ResourceLocation(Multiverse.MOD_ID, "shapes.json"));
     public static final Codec<List<Entry>> ENTRY_CODEC = RecordCodecBuilder.<Entry>create(inst -> inst.group(
             MultiverseShape.CODEC.fieldOf("shape").forGetter(Entry::shape),
             ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("weight", 1).forGetter(Entry::weight)

@@ -6,7 +6,7 @@
       "entries": [
         {
           "value": "multiverse:roofed/overworld/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:roofed/overworld/end",
@@ -67,7 +67,7 @@
       "entries": [
         {
           "value": "multiverse:roofed/nether/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:roofed/nether/end",
@@ -128,7 +128,7 @@
       "entries": [
         {
           "value": "multiverse:roofed/end/overworld",
-          "weight": 32
+          "weight": 64
         },
         {
           "value": "multiverse:roofed/end/end",
