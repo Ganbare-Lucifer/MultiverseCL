@@ -14,15 +14,13 @@ public class ServerConfigs {
         SPEC = pair.getRight();
     }
 
-    public final ForgeConfigSpec.DoubleValue fixedTimeChance, travelerSpawnFactor, minRiftWidth, maxRiftWidth, fireworkRate, fireRate, minSpawnRadius, maxSpawnRadius, spawnOffset;
+    public final ForgeConfigSpec.DoubleValue travelerSpawnFactor, minRiftWidth, maxRiftWidth, fireworkRate, fireRate, minSpawnRadius, maxSpawnRadius, spawnOffset;
     public final ForgeConfigSpec.IntValue maxDimensions, boundlessBladeCooldown, riftRange, minRiftHeight, maxRiftHeight, spawnPeriod, spawnCount, slowFalling;
 
     public ServerConfigs(ForgeConfigSpec.Builder builder) {
         builder.comment("Multiverse server-side configuration").push("Dimensions");
         maxDimensions = builder.comment("This is the number of Multiverse dimensions that rifts will generate for. ")
                 .defineInRange("max", 25, 1, Integer.MAX_VALUE);
-        fixedTimeChance = builder.comment("This is the chance that a Multiverse dimension has a random, fixed time. ")
-                .defineInRange("fixedTimeChance", 0.25, 0, 1);
         builder.pop().push("Rifts");
         riftRange = builder.comment("This is the range that is scanned for existing rifts using points of interest. ")
                 .defineInRange("range", 128, 0, Integer.MAX_VALUE);
