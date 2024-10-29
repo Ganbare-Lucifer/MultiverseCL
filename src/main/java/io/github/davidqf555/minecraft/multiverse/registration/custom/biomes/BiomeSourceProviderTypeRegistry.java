@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid = Multiverse.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class BiomeSourceProviderTypeRegistry {
 
-    public static ResourceKey<Registry<Codec<? extends BiomeSourceProvider<?>>>> LOCATION = ResourceKey.createRegistryKey(new ResourceLocation(Multiverse.MOD_ID, "biome_source_provider"));
+    public static final ResourceKey<Registry<Codec<? extends BiomeSourceProvider<?>>>> LOCATION = ResourceKey.createRegistryKey(new ResourceLocation(Multiverse.MOD_ID, "biome_source_provider"));
     public static final DeferredRegister<Codec<? extends BiomeSourceProvider<?>>> TYPES = DeferredRegister.create(LOCATION, Multiverse.MOD_ID);
     public static final RegistryObject<Codec<NoiseBiomeSourceProvider>> NOISE = register("noise", NoiseBiomeSourceProvider.CODEC);
     private static Supplier<IForgeRegistry<Codec<? extends BiomeSourceProvider<?>>>> registry = null;

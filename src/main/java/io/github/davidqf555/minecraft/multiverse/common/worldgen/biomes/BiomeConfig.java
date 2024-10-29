@@ -18,20 +18,13 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class BiomeConfig {
+public record BiomeConfig(List<BiomeType> types, IntRange count) {
 
     public static final Codec<BiomeConfig> DIRECT_CODEC = RecordCodecBuilder.create(inst -> inst.group(
-            BiomeType.CODEC.listOf().fieldOf("types").forGetter(BiomeConfig::getTypes),
-            IntRange.POSITIVE_CODEC.optionalFieldOf("count", IntRange.of(1, 1)).forGetter(BiomeConfig::getCount)
+            BiomeType.CODEC.listOf().fieldOf("types").forGetter(BiomeConfig::types),
+            IntRange.POSITIVE_CODEC.optionalFieldOf("count", IntRange.of(1, 1)).forGetter(BiomeConfig::count)
     ).apply(inst, BiomeConfig::new));
     public static final Codec<Holder<BiomeConfig>> CODEC = RegistryFileCodec.create(BiomeConfigRegistry.LOCATION, DIRECT_CODEC);
-    private final List<BiomeType> types;
-    private final IntRange count;
-
-    public BiomeConfig(List<BiomeType> types, IntRange count) {
-        this.types = types;
-        this.count = count;
-    }
 
     private static BiomeType selectRandom(RandomSource random, List<BiomeType> types) {
         int total = types.stream().mapToInt(BiomeType::getWeight).sum();
@@ -45,18 +38,10 @@ public class BiomeConfig {
         throw new RuntimeException();
     }
 
-    public List<BiomeType> getTypes() {
-        return types;
-    }
-
-    public IntRange getCount() {
-        return count;
-    }
-
     public Pair<MultiverseType, Set<ResourceKey<Biome>>> selectRandom(Registry<Biome> registry, RandomSource rand) {
         Set<MultiverseType> biomesTypes = EnumSet.allOf(MultiverseType.class);
         Predicate<ResourceKey<Biome>> valid = key -> biomesTypes.stream().anyMatch(type -> type.is(key));
-        List<BiomeType> types = getTypes().stream().filter(type -> type.getBiomes(registry).stream().anyMatch(valid)).collect(Collectors.toList());
+        List<BiomeType> types = types().stream().filter(type -> type.getBiomes(registry).stream().anyMatch(valid)).collect(Collectors.toList());
         if (types.isEmpty()) {
             return Pair.of(MultiverseType.OVERWORLD, Set.of(Biomes.THE_VOID));
         }
