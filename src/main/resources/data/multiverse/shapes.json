@@ -9,18 +9,11 @@
       "weight": 4
     },
     {
-      "shape": "multiverse:mountains",
-      "weight": 4
-    },
-    {
       "shape": "multiverse:flooded/normal",
       "weight": 4
     },
     {
       "shape": "multiverse:flooded/amplified"
-    },
-    {
-      "shape": "multiverse:flooded/mountains"
     },
     {
       "shape": "multiverse:roofed",
