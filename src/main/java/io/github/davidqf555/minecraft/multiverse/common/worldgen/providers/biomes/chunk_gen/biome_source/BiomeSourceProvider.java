@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.BiomeSource;
 
 public interface BiomeSourceProvider<T extends BiomeSource> extends BiomeFieldProvider<T> {
 
-    Codec<BiomeSourceProvider<?>> CODEC = ExtraCodecs.lazyInitializedCodec(() -> BiomeSourceProviderTypeRegistry.getRegistry().getCodec().dispatch(prov -> prov.getType(), type -> type.getCodec()));
+    Codec<BiomeSourceProvider<?>> CODEC = ExtraCodecs.lazyInitializedCodec(() -> BiomeSourceProviderTypeRegistry.getRegistry().getCodec().dispatch(BiomeSourceProvider::getType, BiomeSourceProviderType::getCodec));
 
     BiomeSourceProviderType<? extends BiomeFieldProvider<T>> getType();
 

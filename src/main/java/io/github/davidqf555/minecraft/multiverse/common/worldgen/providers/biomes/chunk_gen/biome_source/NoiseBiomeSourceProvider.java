@@ -8,7 +8,6 @@ import io.github.davidqf555.minecraft.multiverse.common.ConfigHelper;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.MultiverseType;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.biomes.MultiverseBiomeSource;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.biomes.MultiverseBiomes;
-import io.github.davidqf555.minecraft.multiverse.common.worldgen.providers.biomes.BiomeFieldProvider;
 import io.github.davidqf555.minecraft.multiverse.registration.custom.biomes.BiomeSourceProviderTypeRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -80,7 +79,7 @@ public class NoiseBiomeSourceProvider implements BiomeSourceProvider<MultiverseB
     }
 
     @Override
-    public BiomeSourceProviderType<? extends BiomeFieldProvider<MultiverseBiomeSource>> getType() {
+    public BiomeSourceProviderType<? extends NoiseBiomeSourceProvider> getType() {
         return BiomeSourceProviderTypeRegistry.NOISE.get();
     }
 
