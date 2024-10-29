@@ -13,12 +13,12 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -183,10 +183,10 @@ public class RiftTileEntity extends BlockEntity implements ITeleporter {
 
     private Vec3 getOrCreateRift(ServerLevel dest, RandomSource rand, Vec3 center, int range, int current, BlockState state) {
         PoiManager manager = dest.getPoiManager();
-        PoiType poi = POIRegistry.RIFT.get();
+        ResourceLocation poi = POIRegistry.RIFT.getId();
         BlockPos pos = BlockPos.containing(center);
         manager.ensureLoadedAndValid(dest, pos, range);
-        return manager.getInSquare(poi::equals, pos, range, PoiManager.Occupancy.ANY)
+        return manager.getInSquare(holder -> holder.is(poi), pos, range, PoiManager.Occupancy.ANY)
                 .map(PoiRecord::getPos)
                 .filter(block -> {
                     BlockEntity tile = dest.getBlockEntity(block);
