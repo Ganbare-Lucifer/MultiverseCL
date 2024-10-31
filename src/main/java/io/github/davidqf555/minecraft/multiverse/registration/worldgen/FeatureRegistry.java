@@ -27,7 +27,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public final class FeatureRegistry {
@@ -38,7 +37,7 @@ public final class FeatureRegistry {
     public static final RegistryObject<RiftFeature> RIFT = register("rift", () -> new RiftFeature(RiftConfig.CODEC));
     public static final RegistryObject<WaterLoggedBlockFeature> WATERLOGGED_BLOCK = register("waterlogged_block", () -> new WaterLoggedBlockFeature(SimpleBlockConfiguration.CODEC));
 
-    public static final RegistryObject<PlacedFeature> PLACED_RIFT = registerPlaced("rift", () -> new PlacedFeature(Holder.direct(new ConfiguredFeature<>(RIFT.get(), RiftConfig.of(Optional.empty(), BlockRegistry.RIFT.get().defaultBlockState().setValue(RiftBlock.TEMPORARY, false)))), List.of(RiftDimensionPlacement.INSTANCE, PlacementUtils.FULL_RANGE, RarityFilter.onAverageOnceEvery(ServerConfigs.INSTANCE.riftChance.get()), InSquarePlacement.spread(), BiomeFilter.biome())));
+    public static final RegistryObject<PlacedFeature> PLACED_RIFT = registerPlaced("rift", () -> new PlacedFeature(Holder.direct(new ConfiguredFeature<>(RIFT.get(), RiftConfig.of(BlockRegistry.RIFT.get().defaultBlockState().setValue(RiftBlock.TEMPORARY, false)))), List.of(RiftDimensionPlacement.INSTANCE, PlacementUtils.FULL_RANGE, RarityFilter.onAverageOnceEvery(ServerConfigs.INSTANCE.riftChance.get()), InSquarePlacement.spread(), BiomeFilter.biome())));
     public static final RegistryObject<PlacedFeature> KALEIDITE_CLUSTER = registerPlaced("kaleidite_cluster", () -> new PlacedFeature(Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(FeatureRegistry::getDirectional, Direction.values())))), List.of(MultiverseDimensionPlacement.INSTANCE, PlacementUtils.FULL_RANGE, CountPlacement.of(16), InSquarePlacement.spread(), BiomeFilter.biome())));
 
     private FeatureRegistry() {
