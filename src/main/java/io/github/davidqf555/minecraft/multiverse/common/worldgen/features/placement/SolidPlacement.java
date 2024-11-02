@@ -3,6 +3,7 @@ package io.github.davidqf555.minecraft.multiverse.common.worldgen.features.place
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.davidqf555.minecraft.multiverse.registration.worldgen.PlacementRegistry;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.ExtraCodecs;
@@ -12,9 +13,11 @@ import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.stream.Stream;
 
+@MethodsReturnNonnullByDefault
 public class SolidPlacement extends PlacementModifier {
 
     public static final Codec<SolidPlacement> CODEC = RecordCodecBuilder.create(inst -> inst.group(
@@ -36,7 +39,7 @@ public class SolidPlacement extends PlacementModifier {
     }
 
     @Override
-    public Stream<BlockPos> getPositions(PlacementContext context, Random random, BlockPos pos) {
+    public Stream<BlockPos> getPositions(PlacementContext context, @Nonnull Random random, BlockPos pos) {
         WorldGenLevel level = context.getLevel();
         BlockPos.MutableBlockPos mutable = pos.mutable();
         for (int step = 0; step < steps; step++) {

@@ -3,6 +3,7 @@ package io.github.davidqf555.minecraft.multiverse.common.worldgen.features.place
 import com.mojang.serialization.Codec;
 import io.github.davidqf555.minecraft.multiverse.common.Multiverse;
 import io.github.davidqf555.minecraft.multiverse.registration.worldgen.PlacementRegistry;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
@@ -10,9 +11,12 @@ import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.stream.Stream;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class RiftDimensionPlacement extends PlacementModifier {
 
     public static final RiftDimensionPlacement INSTANCE = new RiftDimensionPlacement();

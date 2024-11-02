@@ -14,6 +14,8 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
+import javax.annotation.Nonnull;
+
 public class MultiverseNoiseChunkGenerator extends NoiseBasedChunkGenerator {
 
     public static final Codec<MultiverseNoiseChunkGenerator> CODEC = RecordCodecBuilder.create(p_188643_ -> commonCodec(p_188643_).and(p_188643_.group(
@@ -32,6 +34,7 @@ public class MultiverseNoiseChunkGenerator extends NoiseBasedChunkGenerator {
         globalFluidPicker = fluid;
     }
 
+    @Nonnull
     @Override
     protected Codec<? extends ChunkGenerator> codec() {
         return ChunkGeneratorRegistry.MULTIVERSE.get();

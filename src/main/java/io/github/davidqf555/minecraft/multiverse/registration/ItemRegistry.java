@@ -13,12 +13,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public final class ItemRegistry {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Multiverse.MOD_ID);
     public static final CreativeModeTab TAB = new CreativeModeTab(Multiverse.MOD_ID) {
+        @Nonnull
         @Override
         public ItemStack makeIcon() {
             return KALEIDITE_SHARD.get().getDefaultInstance();

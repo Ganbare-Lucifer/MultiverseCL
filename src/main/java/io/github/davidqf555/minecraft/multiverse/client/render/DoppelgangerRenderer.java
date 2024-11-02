@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.entity.layers.*;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.resources.ResourceLocation;
 
+import javax.annotation.Nonnull;
 import java.util.UUID;
 
 public class DoppelgangerRenderer extends HumanoidMobRenderer<DoppelgangerEntity, PlayerModel<DoppelgangerEntity>> {
@@ -27,6 +28,7 @@ public class DoppelgangerRenderer extends HumanoidMobRenderer<DoppelgangerEntity
         addLayer(new BeeStingerLayer<>(this));
     }
 
+    @Nonnull
     @Override
     public ResourceLocation getTextureLocation(DoppelgangerEntity entity) {
         UUID id = entity.getOriginalId();

@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Map;
@@ -45,7 +46,7 @@ public class CodecDataProvider<T> implements DataProvider {
     }
 
     @Override
-    public void run(HashCache hashCache) throws IOException {
+    public void run(@Nonnull HashCache hashCache) throws IOException {
         DynamicOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, BuiltinRegistries.ACCESS);
         for (ResourceLocation loc : values.keySet()) {
             T val = values.get(loc);
@@ -55,6 +56,7 @@ public class CodecDataProvider<T> implements DataProvider {
         }
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return registry.location().toString();

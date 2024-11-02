@@ -3,6 +3,7 @@ package io.github.davidqf555.minecraft.multiverse.common.blocks;
 import io.github.davidqf555.minecraft.multiverse.common.MultiverseTags;
 import io.github.davidqf555.minecraft.multiverse.common.ServerConfigs;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionHelper;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.MinecraftServer;
@@ -43,6 +44,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 import java.util.Random;
 
+@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class RiftBlock extends BaseEntityBlock implements BucketPickup, LiquidBlockContainer {
 

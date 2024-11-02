@@ -3,14 +3,18 @@ package io.github.davidqf555.minecraft.multiverse.common.worldgen.features.place
 import com.mojang.serialization.Codec;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionHelper;
 import io.github.davidqf555.minecraft.multiverse.registration.worldgen.PlacementRegistry;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 import java.util.stream.Stream;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class MultiverseDimensionPlacement extends PlacementModifier {
 
     public static final MultiverseDimensionPlacement INSTANCE = new MultiverseDimensionPlacement();

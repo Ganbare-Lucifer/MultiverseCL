@@ -12,6 +12,7 @@ import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ public class MultiverseBiomeSource extends MultiNoiseBiomeSource {
         featuresPerStep = Suppliers.memoize(() -> buildFeaturesPerStep(List.copyOf(possibleBiomes()), true));
     }
 
+    @Nonnull
     @Override
     protected Codec<? extends BiomeSource> codec() {
         return BiomeSourceRegistry.MULTIVERSE.get();
