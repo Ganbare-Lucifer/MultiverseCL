@@ -45,7 +45,6 @@ public final class EntityRegistry {
     @SubscribeEvent
     public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            SpawnPlacements.register(TRAVELER.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TravelerEntity::canSpawn);
             SpawnPlacements.register(DOPPELGANGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DoppelgangerEntity::canSpawn);
         });
     }

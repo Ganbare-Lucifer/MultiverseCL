@@ -2,7 +2,10 @@ package io.github.davidqf555.minecraft.multiverse.common.blocks;
 
 import io.github.davidqf555.minecraft.multiverse.common.MultiverseTags;
 import io.github.davidqf555.minecraft.multiverse.common.ServerConfigs;
+import io.github.davidqf555.minecraft.multiverse.common.entities.TravelerEntity;
+import io.github.davidqf555.minecraft.multiverse.common.util.EntityUtil;
 import io.github.davidqf555.minecraft.multiverse.common.worldgen.DimensionHelper;
+import io.github.davidqf555.minecraft.multiverse.registration.EntityRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +19,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -80,6 +84,11 @@ public class RiftBlock extends BaseEntityBlock implements BucketPickup, LiquidBl
     public void tick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
         if (state.getValue(TEMPORARY)) {
             world.destroyBlock(pos, true);
+        } else if (rand.nextDouble() < ServerConfigs.INSTANCE.travelerSpawnChance.get()) {
+            TravelerEntity entity = EntityUtil.randomSpawn(EntityRegistry.TRAVELER.get(), world, pos, 0, 8, MobSpawnType.NATURAL);
+            if (entity != null) {
+                entity.setPortalCooldown();
+            }
         }
     }
 
