@@ -37,8 +37,7 @@ public class ServerConfigs {
                 .defineInRange("minHeight", 16, 0, Double.MAX_VALUE);
         maxRiftHeight = builder.comment("This is the maximum height of rifts placed both naturally and artificially. This should be greater or equal to minHeight. ")
                 .defineInRange("maxHeight", 48, 0, Double.MAX_VALUE);
-        builder.pop();
-        builder.push("Prismatic Sword");
+        builder.pop(2).push("PrismaticSword");
         swordCooldown = builder.comment("This is the cooldown of the sword's rift spawning in ticks. ")
                 .defineInRange("swordCooldown", 500, 0, Integer.MAX_VALUE);
         swordSpawnDistance = builder.comment("This is the distance in blocks from the player's eyes in the direction they look in that the center of the rift spawns from the sword. ")
@@ -57,8 +56,7 @@ public class ServerConfigs {
                 .defineInRange("swordMaxHeight", 64, 0, Double.MAX_VALUE);
         swordHeightRate = builder.comment("This is the rate that the height of rifts spawned by the sword grow in blocks per tick charged. ")
                 .defineInRange("swordHeightRate", 2.0 / 25, 0, Double.MAX_VALUE);
-        builder.pop();
-        builder.push("Kaleidite Crossbow");
+        builder.pop().push("KaleiditeCrossbow");
         fireworkRate = builder.comment("This is the chance that fireworks are spawned when shooting an arrow. ")
                 .defineInRange("fireworkRate", 0.2, 0, 1);
         fireRate = builder.comment("This is the chance that a spawned arrow is on fire. ")
@@ -73,7 +71,7 @@ public class ServerConfigs {
                 .defineInRange("spawnPeriod", 5, 1, Integer.MAX_VALUE);
         spawnCount = builder.comment("This is the number of projectiles spawned every time the crossbow is shot. ")
                 .defineInRange("spawnCount", 20, 0, Integer.MAX_VALUE);
-        builder.pop().push("Kaleidite Chestplate");
+        builder.pop().push("KaleiditeChestplate");
         armorMinOffset = builder.comment("This is the minimum distance in blocks that a doppelganger will spawn from the wearer. ")
                 .defineInRange("armorMinOffset", 1, 0, Integer.MAX_VALUE);
         armorMaxOffset = builder.comment("This is the maximum distance in blocks that a doppelganger will spawn from the wearer. This should be at least armorMinOffset. ")
@@ -98,7 +96,7 @@ public class ServerConfigs {
                 .defineInRange("doppelTimeout", 600, 0, Integer.MAX_VALUE);
         coreRange = builder.comment("This is the distance in blocks that the kaleidite core searches for connected rifts to remove. ")
                 .defineInRange("coreRange", 50, 0, Double.MAX_VALUE);
-        builder.pop(2);
+        builder.pop();
     }
 
 }
