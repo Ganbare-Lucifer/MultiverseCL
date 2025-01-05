@@ -2,9 +2,12 @@ package io.github.davidqf555.minecraft.multiverse.common.entities;
 
 import io.github.davidqf555.minecraft.multiverse.client.ClientHelper;
 import io.github.davidqf555.minecraft.multiverse.common.MultiverseTags;
+import io.github.davidqf555.minecraft.multiverse.common.ServerConfigs;
 import io.github.davidqf555.minecraft.multiverse.common.entities.ai.EntityHurtByTargetGoal;
 import io.github.davidqf555.minecraft.multiverse.common.entities.ai.EntityHurtTargetGoal;
 import io.github.davidqf555.minecraft.multiverse.common.entities.ai.FollowEntityGoal;
+import io.github.davidqf555.minecraft.multiverse.common.util.EntityUtil;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -30,14 +33,16 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.UUID;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class DoppelgangerEntity extends PathfinderMob {
 
     private static final EntityDataAccessor<Optional<UUID>> ORIGINAL = SynchedEntityData.defineId(DoppelgangerEntity.class, EntityDataSerializers.OPTIONAL_UUID);
-    private static final int TIMEOUT = 600;
     private static final byte RIFT_PARTICLES_EVENT = 50;
     private static final double GEAR_RATE = 0.8;
     private static final float ENCHANT_RATE = 0.5f;
@@ -53,6 +58,7 @@ public class DoppelgangerEntity extends PathfinderMob {
                 .add(Attributes.MOVEMENT_SPEED, 0.35635);
     }
 
+    @Nullable
     public static <T extends DoppelgangerEntity> T spawnRandom(EntityType<T> type, ServerPlayer player, BlockPos center, int minOffset, int maxOffset) {
         T entity = EntityUtil.randomSpawn(type, player.getLevel(), center, minOffset, maxOffset, MobSpawnType.REINFORCEMENT);
         if (entity != null) {
@@ -158,7 +164,7 @@ public class DoppelgangerEntity extends PathfinderMob {
         Player original = getOriginal();
         if (original == null) {
             kill();
-        } else if (original.tickCount - Math.max(original.getLastHurtMobTimestamp(), original.getLastHurtByMobTimestamp()) >= TIMEOUT) {
+        } else if (original.tickCount - Math.max(original.getLastHurtMobTimestamp(), original.getLastHurtByMobTimestamp()) >= ServerConfigs.INSTANCE.doppelTimeout.get()) {
             kill();
         }
     }

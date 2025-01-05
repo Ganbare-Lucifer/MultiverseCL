@@ -1,7 +1,7 @@
 package io.github.davidqf555.minecraft.multiverse.common.items;
 
+import io.github.davidqf555.minecraft.multiverse.common.ArrowSummonsData;
 import io.github.davidqf555.minecraft.multiverse.common.ServerConfigs;
-import io.github.davidqf555.minecraft.multiverse.common.data.ArrowSummonsData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -11,12 +11,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class SummonCrossbowItem extends CrossbowItem {
 
     public SummonCrossbowItem(Properties properties) {
         super(properties.stacksTo(1));
     }
 
+    @Nonnull
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack bow = player.getItemInHand(hand);

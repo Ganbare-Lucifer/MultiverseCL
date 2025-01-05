@@ -1,7 +1,13 @@
 package io.github.davidqf555.minecraft.multiverse.common;
 
 import io.github.davidqf555.minecraft.multiverse.registration.*;
-import io.github.davidqf555.minecraft.multiverse.registration.worldgen.*;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.DimensionProviderTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.FluidPickerTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.SeaLevelProviderTypeRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.custom.biomes.*;
+import io.github.davidqf555.minecraft.multiverse.registration.worldgen.ChunkGeneratorRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.worldgen.FeatureRegistry;
+import io.github.davidqf555.minecraft.multiverse.registration.worldgen.PlacementRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,8 +46,14 @@ public class Multiverse {
         ParticleTypeRegistry.TYPES.register(bus);
         PlacementRegistry.TYPES.register(bus);
         ChunkGeneratorRegistry.GENERATORS.register(bus);
-        BiomeModifierRegistry.SERIALIZERS.register(bus);
-        SerializableFluidPickerRegistry.CODECS.register(bus);
-        SeaLevelSelectorRegistry.CODECS.register(bus);
+        BiomeChunkGeneratorProviderTypeRegistry.TYPES.register(bus);
+        BiomeDimensionProviderTypeRegistry.TYPES.register(bus);
+        BiomeDimensionTypeProviderTypeRegistry.TYPES.register(bus);
+        BiomeNoiseGeneratorSettingsProviderTypeRegistry.TYPES.register(bus);
+        BiomeSourceProviderTypeRegistry.TYPES.register(bus);
+        DimensionProviderTypeRegistry.TYPES.register(bus);
+        FluidPickerTypeRegistry.TYPES.register(bus);
+        SeaLevelProviderTypeRegistry.TYPES.register(bus);
     }
+
 }

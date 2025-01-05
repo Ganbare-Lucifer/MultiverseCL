@@ -1,5 +1,6 @@
 package io.github.davidqf555.minecraft.multiverse.common.items.tools;
 
+import io.github.davidqf555.minecraft.multiverse.common.util.MultiversalToolHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -15,8 +16,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
 public class MultiversalShovelItem extends ShovelItem {
 
     public MultiversalShovelItem(Tier tier, float damage, float speed, Properties properties) {
@@ -42,6 +46,7 @@ public class MultiversalShovelItem extends ShovelItem {
         return false;
     }
 
+    @Nonnull
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
